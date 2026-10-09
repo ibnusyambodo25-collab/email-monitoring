@@ -1,0 +1,43 @@
+{
+  "name": "rejected-mail-monitor",
+  "version": "1.0.0",
+  "description": "Monitor report email rejected/gagal (POP3 -> PostgreSQL -> dashboard)",
+  "scripts": {
+    "dev": "concurrently -k -n api,web -c blue,green \"node --watch-path=server server/index.js\" \"vite\"",
+    "build": "vite build",
+    "prestart": "vite build --logLevel warn",
+    "start": "node server/index.js",
+    "migrate": "node server/db/migrate.js",
+    "fetch": "node server/cli/fetch.js",
+    "import-csv": "node server/cli/import-csv.js",
+    "test": "node --test --test-concurrency=1 --test-reporter=spec \"test/**/*.test.js\""
+  },
+  "author": "",
+  "license": "UNLICENSED",
+  "type": "module",
+  "dependencies": {
+    "csv-parse": "^7.0.3",
+    "exceljs": "^4.4.0",
+    "express": "^5.2.1",
+    "iconv-lite": "^0.7.3",
+    "mailparser": "^3.9.36",
+    "node-cron": "^4.6.0",
+    "node-pop3": "^0.15.3",
+    "pg": "^8.23.1"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-react": "^6.1.2",
+    "concurrently": "^10.0.5",
+    "react": "^19.3.0",
+    "react-dom": "^19.3.0",
+    "recharts": "^3.10.1",
+    "vite": "^8.3.3"
+  },
+  "private": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "overrides": {
+    "uuid": "^11.1.1"
+  }
+}
